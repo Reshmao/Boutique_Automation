@@ -1,0 +1,26 @@
+{% include 'adminheader.html'%}
+
+
+       
+<h1>VIEW BOOKING DETAILS</h1>
+
+<table class="table" id="customers" style="width: 800PX;">
+    <tr>
+                <th>DESIGN</th>
+                <th>IMAGE</th>
+                <th>QUANTITY</th>
+                <th>AMOUNT</th>
+               
+            {% for row in q %}
+            <tr>
+                <td>{{row.design.design}}</td>
+                <td><img src="/static/media/{{row.design.image}}" width="100" height="100" alt=""></td>
+                <td>{{row.qty}}</td>
+                <td>{{row.bamt}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+   
+
+
+        {% include 'footer.html'%}

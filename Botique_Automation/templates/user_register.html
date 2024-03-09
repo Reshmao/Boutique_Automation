@@ -1,0 +1,146 @@
+{% include 'publicheader.html'%}
+
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='a']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='b']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        // $("input[name='dob']").on('input', function(e) {
+        //     $(this).val($(this).val().replace(/[^0-9/]/g, ''));
+
+        // });
+        
+        $("input[name='c']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+            
+        });
+        $("input[name='d']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='e']").on('input', function(e) {
+              var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{1,}/.test(this.value);
+                if(!re) {
+                    $('#eerror').show();
+                } else {
+                    $('#eerror').hide();
+                }
+
+        });
+        $("input[name='pincode']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='place']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='g']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+    });
+
+
+
+   var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+
+
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(/static/assets/img/slide/slide-2.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                       
+                <br><br><br><br>
+                <br><br><br><br>
+      
+
+       
+<br><form action="" method="post">
+    <h2 class="animate__animated animate__fadeInDown"><span>USER REGISTRATION </span> </h2>
+
+{%csrf_token%}
+        <table class="table" style="width: 500px;">
+            <tr>
+                <th>FIRST NAME</th>
+                <td><input type="text" name="a" id="" required class="form-control"></td>
+            </tr>
+             <tr>
+                <th>LAST NAME</th>
+                <td><input type="text" name="b" id="" required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>PLACE</th>
+                <td><input type="text" name="c" id="" required class="form-control"></td>
+            </tr>
+            <tr><tr>
+                <th>PHONE</th>
+                <td><input type="text" name="d" id="" required pattern="[0-9]{10}" class="form-control"></td>
+            </tr><tr>
+                <th>ADDRESS</th>
+                <td><input type="text" name="pincode" id="" required   class="form-control"></td>
+            </tr>
+            <tr><tr>
+                <th>EMAIL</th>
+                <td><input type="email" name="e" id="" required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>USERNAME</th>
+                <td><input type="text" name="f" id="" required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>PASSWORD</th>
+                <td><input type="password" name="g" id=""pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required class="form-control"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" name="login"class="btn btn-success" id="" value="SUBMIT"></td>
+            </tr>
+
+        </table>
+</form>
+<br><br><br><br><br>    
+<br><br>
+</div>
+</div>
+
+
+<!-- Slide 3 -->
+
+</div>
+
+
+</div>
+</div>
+</section><!-- End Hero --> 
+{% include 'cfooter.html'%}
+

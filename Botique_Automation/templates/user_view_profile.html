@@ -1,0 +1,110 @@
+{% include 'user_header.html'%}
+{% include 'tempheader.html'%}
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='a']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='b']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        // $("input[name='dob']").on('input', function(e) {
+        //     $(this).val($(this).val().replace(/[^0-9/]/g, ''));
+
+        // });
+        
+        $("input[name='d']").on('input', function(e) {
+          $(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        // $("input[name='pincode']").on('input', function(e) {
+        //   $(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        // });
+        $("input[name='e']").on('input', function(e) {
+              var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{1,}/.test(this.value);
+                if(!re) {
+                    $('#eerror').show();
+                } else {
+                    $('#eerror').hide();
+                }
+
+        });
+        $("input[name='pincode']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='c']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='g']").on('input', function(e) {
+          $(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+    });
+
+
+
+   var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+<h1>UPDATE PROFILE</h1>
+<form action="" method="post">
+{%csrf_token%}
+{% if up %}
+
+        <table class="table" style="width: 500px; color: rgb(255, 255, 255);">
+            <tr>
+                <th>fIRST NAME</th>
+                <td><input type="text" name="a" id="" class="form-control" value="{{up.fname}}"></td>
+            </tr>
+             <tr>
+                <th>LAST NAME</th>
+                <td><input type="text" name="b" id="" class="form-control" value="{{up.lname}}"></td>
+            </tr>
+            <tr>
+                <th>PLACE</th>
+                <td><input type="text" name="c" id="" class="form-control" value="{{up.place}}"></td>
+            </tr>
+            <tr><tr>
+                <th>PHONE</th>
+                <td><input type="text" name="d" id="" pattern="[0-9]{10}" class="form-control" value="{{up.phone}}"></td>
+            </tr><tr>
+                <th>ADDRESS</th>
+                <td><input type="text" name="pincode" id=""  class="form-control" value="{{up.address}}"></td>
+            </tr>
+            <tr><tr>
+                <th>EMAIL</th>
+                <td><input type="email" name="e" id="" class="form-control"value="{{up.email}}"></td>
+            </tr>
+           
+            <tr>
+                <td align="center" colspan="2"><input type="submit" class="btn btn-success" name="login" id="" value="UPDATE"></td>
+            </tr>
+
+        </table>
+        {% endif %}
+</form>
+<br><br><br><br><br>    
+
+
+
+{% include 'temp_footer.html'%}
+{% include 'cfooter.html'%}
+

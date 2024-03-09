@@ -1,0 +1,103 @@
+{% include 'user_header.html'%}
+
+{% include 'tempheader.html'%}<br><br>
+  
+{% include 'temp_footer.html'%}
+
+    <!-- ======= Whu Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="section-title">
+          <h2> <span> MY WISHLIST </span></h2>
+        </div>
+        <!-- <form action="" method="post">
+          {%csrf_token%}
+      <table class="table" style="width: 500px;">
+          <tr>
+              <td><input type="text" name="sname" id="" placeholder="search here" class="form-control"></td>
+              <td>
+                  <input type="submit" name="search" value="SEARCH" id="" class="btn btn-info">
+              </td>
+          </tr>
+      </table>
+      </form> -->
+      
+        <div class="row">
+          {% for row in q%}
+
+          <div class="col-lg-4">
+            <div class="box">
+              <img src="/static/media/{{row.design.image}}" alt="" class="img-fluid">
+              
+              <h4>{{row.design.design}}</h4>
+              <h4>Rs.{{row.design.amount}}</h4>
+              <p></p>
+           
+             
+              <span><a  class="btn btn-danger" href="/customer_remove_wlist/{{row.id}}">remove</a>
+                <span><a  class="btn btn-success" href="/customer_add_cart/{{row.design.id}}/{{row.design.design}}/{{row.design.amount}}/{{row.design.image}}/{{row.design.dqty}}">buy</a>
+
+
+              
+
+            </div>
+          </div>
+
+          {%endfor%}
+
+
+        
+
+        </div>
+
+      </div>
+    </section><!-- End Whu Us Section -->
+
+
+
+
+   <!-- ======= Team Section ======= -->
+  <!--  <section id="team" class="team section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>VIEW PRODUCTS</h2>
+      </div>
+
+      <div class="row">
+        {% for row in q %}
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img src="/static/media/{{row.image}}"   class="img-fluid" alt="">
+             
+            </div>
+            <div class="member-info">
+              <h4>{{row.product}}</h4>
+              <span>Amount:{{row.amt}}</span>
+              <span>Quantity:{{row.quantity}}</span>
+              <span>
+                <td><a class="btn btn-success" href="/customer_add_cart/{{row.id}}/{{row.seller_id}}/{{row.product}}/{{row.amt}}">add to cart</a></td>
+            </span>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </section> -->
+  <!-- End Team Section -->
+
+
+
+
+  {% include 'cfooter.html'%}

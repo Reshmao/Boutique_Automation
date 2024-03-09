@@ -1,0 +1,71 @@
+{% include 'user_header.html'%}
+
+{% include 'tempheader.html'%}<br><br>
+  <h1 style="color:white">CUSTOMIZED DESIGN</h1>
+
+       
+<br><form action="" method="post">
+{%csrf_token%}
+        <table class="table" style="width: 500px;">
+            <tr>
+                <th>Name</th>
+                <td><input type="text" required name="b" id="" class="form-control"></td>
+            </tr>
+            <tr>
+                <th> Quantity</th>
+                <td><input type="number" required min="1" name="a" id="" class="form-control"></td>
+            </tr>
+             
+            <!-- <tr>
+                <th>Amount</th>
+                <td><input type="number" min="1" name="c" id="" class="form-control"></td>
+            </tr> -->
+            <tr>
+                <th>DESCRIPTION</th>
+                <td>
+                    <textarea name="des" required id="" cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+          
+            <tr>
+                <td align="center" colspan="2"><input type="submit" name="login"class="btn btn-success" id="" value="SUBMIT"></td>
+            </tr>
+
+        </table>
+</form>
+<h1>VIEW CUSTOMIZED DESIGN</h1>
+
+
+<table class="table" id="customers" >
+    <tr>
+                <th>NAME</th>
+
+                <th>QUANTITY</th>
+                <th>DESCRIPTION</th>
+                <th>ADVANCED AMOUNT</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+            {% for row in q %}
+            <tr>
+                <td>{{row.cd_name}}</td>
+                <td>{{row.quantity}}</td>
+                <td>{{row.details}}</td>
+                <td>{{row.amount}}</td>
+                <td>{{row.date}}</td>
+                <!-- <td>{{row.status}}</td> -->
+
+                {%if row.status == "accept" %}
+
+                <td> <a class="btn btn-info" href="/customer_make_cpayment/{{row.id}}/{{row.amount}}"> PROCEED TO CHECKOUT</a></td>
+                
+                {%else%}
+                <td>{{row.status}}</td>
+                {%endif%}
+
+            </tr>
+{%endfor%}
+        </table>
+{% include 'temp_footer.html'%}
+
+{% include 'cfooter.html'%}
+

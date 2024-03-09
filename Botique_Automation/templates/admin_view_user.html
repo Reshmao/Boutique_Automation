@@ -1,0 +1,33 @@
+{% include 'adminheader.html'%}
+
+
+      
+<h1>VIEW CUSTOMER</h1>
+
+
+<table class="table" id="customers" >
+    <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+          
+                <th>PLACE</th>
+             
+                <th>PHONE</th>
+                
+                <th>EMAIL</th>
+                <th>ADDRESS</th>
+{% for row in cus %}
+            <tr>
+                <td>{{row.fname}}</td>
+                <td>{{row.lname}}</td>
+                <td>{{row.place}}</td>
+                <td>{{row.phone}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.address}}</td>
+
+            </tr>
+{%endfor%}
+        </table>
+
+        {% include 'footer.html'%}
+

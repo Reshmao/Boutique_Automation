@@ -1,0 +1,36 @@
+{% include 'adminheader.html'%}
+
+
+      
+<h1>VIEW MESSAGES</h1>
+
+<table class="table" id="customers" >
+     
+    <tr>
+        <th>Slno</th>
+        <th>Username</th>
+        <th>Message</th>
+        <th>Reply</th>
+        <th>Date</th>
+    </tr>
+
+    {% for row in cus %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{row.user.fname}} {{row.user.lname}}</td>
+        <td>{{row.chat}} </td>
+        {% if row.reply == "pending" %}
+        <td><a class="btn btn-success" href="/admin_send_reply/{{row.id}}">send reply</a></td>
+        {%else%}
+        <td>{{row.reply}} </td>
+        {%endif%}
+        <td>{{row.date}} </td>
+    
+
+    </tr>
+
+    {%endfor%}
+</table>
+
+        {% include 'footer.html'%}
+

@@ -1,0 +1,76 @@
+{% include 'adminheader.html'%}
+
+
+   
+<h1>SIZECHART</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% if up %}
+
+    <table class="table" id="customers" style="width: 800px;">
+        <tr>
+            <th>Sizechart</th>
+            <td><input type="text" name="cat" id="" required pattern="[A-Za-z]+$" class="form-control" value="{{up.category}}"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" name="add" value="update" class="btn btn-success">
+
+            </td>
+        </tr>
+     
+
+
+    </table>
+    {%else%}
+    <table class="table" id="customers" style="width: 800px;">
+        <tr>
+            <th>Sizechart</th>
+            <td><input type="text" name="cat" id="" pattern="[A-Za-z]+$" class="form-control" required=""></td>
+        </tr>
+       
+     
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" name="add" value="add" class="btn btn-success">
+
+            </td>
+        </tr>
+
+
+    </table>
+    {%endif%}
+    
+    <h1>VIEW SIZECHART</h1>
+    <table class="table" id="customers" style="width: 500px;">
+     
+        <tr>
+            <th>Slno</th>
+            <th>Sizechart</th>
+            <th></th>
+
+           
+        </tr>
+
+        {% for row in qry1 %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{row.size}}</td>
+            {% if row.status == "active"%}
+            <td><a  class="btn btn-info" href="/size_deactive/{{row.design_id}}/{{row.id}}">deactive</a></td>
+            {% elif row.status == "deactive"%}
+            <td><a  class="btn btn-warning" href="/size_active/{{row.design_id}}/{{row.id}}">active</a></td>
+            {%endif%}
+            <!-- <td><a class="btn btn-success" href="/update_category/{{row.id}}">update</a></td> -->
+            <td><a class="btn btn-danger" href="/delete_sizechart/{{row.design_id}}/{{row.id}}">delete</a></td>
+     
+
+
+        </tr>
+
+        {%endfor%}
+    </table>
+
+</form>
+
+{% include 'footer.html'%}

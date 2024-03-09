@@ -1,0 +1,59 @@
+{% include 'user_header.html'%}
+
+{% include 'tempheader.html'%}
+
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='feedback']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+       
+     
+        
+        
+    
+        
+    });
+
+
+
+</script>
+
+
+
+ 
+
+<style type="text/css">
+    tr,th{
+        color: black;
+    }
+
+</style>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+<h1 >Feedback</h1>
+                  <table align="center" style="width: 500px;color: black;">
+                    <tr>
+                      <th style="color: white;">Feedback</th>
+          
+ <td><br><input type="text" name="feedback" required  class="form-control" required=""></td>
+                    </tr>
+
+<td colspan="2" align="center"><br><input type="submit" name="add" value="send" class="btn btn-success"></td>
+                    </tr>
+    
+                </table>
+
+            </form>
+            <br><br><br><br><br>
+            <br><br><br><br><br><br><br>
+            {% include 'temp_footer.html'%}
+
+            {% include 'cfooter.html'%}

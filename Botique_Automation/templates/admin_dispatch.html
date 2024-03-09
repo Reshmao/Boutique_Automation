@@ -1,0 +1,30 @@
+{% include 'adminheader.html'%}
+
+
+   
+<h1> REFERENCE </h1>
+<form action="" method="post">
+    {% csrf_token %}
+
+    <table class="table" id="customers" style="width: 800px;">
+        <tr>
+            <th>Reference</th>
+            <td><input type="text" name="ref" id="" class="form-control"></td>
+        </tr>
+       
+     
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" name="add" value="add" class="btn btn-success">
+
+            </td>
+        </tr>
+
+
+    </table>
+    
+    
+
+</form>
+
+{% include 'footer.html'%}

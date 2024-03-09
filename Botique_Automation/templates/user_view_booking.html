@@ -1,0 +1,50 @@
+{% include 'user_header.html'%}
+
+{% include 'tempheader.html'%}<br><br>
+  <h1 style="color:white"><h1>VIEW BOOKINGS</h1>
+</h1>
+
+ <center>
+
+
+
+
+<form action="" method="post">
+    {%csrf_token%}  
+
+<table class="table" id="customers">
+    <tr>
+            <th>CUSTOMER </th>
+                <th>SIZE </th>
+            <th>TOTAL</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+               
+            {% for row in q %}
+            <tr>
+                <td>{{row.user.fname}} {{row.user.lname}}</td>
+                <td>{{row.sizechart.size}}</td>
+                <td>{{row.total}}</td>
+                <td>{{row.date}}</td>
+                <td>{{row.status}}</td>
+                <td> <a class="btn btn-primary" href="/user_view_booking_details/{{row.id}}">booking details</a></td>
+                <td> <a class="btn btn-warning" href="/user_view_cancel/{{row.id}}">cancel</a></td>
+ 
+                {%if row.status == "pending"%}
+                <td> <a class="btn btn-info" href="/customer_make_payment/{{row.id}}/{{row.total}}"> PROCEED TO CHECKOUT</a></td>
+                {% elif row.status == "paid"%}
+                <td> <a class="btn btn-info" href="/user_view_reference/{{row.id}}">view reference </a></td>
+
+                {%endif%}
+
+            </tr>
+            {%endfor%}
+        </table>
+   </form>
+</center>
+{% include 'temp_footer.html'%}
+
+   <!-- {% include 'temp_footer.html'%} -->
+   {% include 'cfooter.html'%}
+
+  

@@ -1,0 +1,52 @@
+{% include 'adminheader.html'%}
+
+
+
+      
+<h1>VIEW CUSTOMIZED DESIGN</h1>
+
+
+<table class="table" id="customers" >
+    <tr>
+                <th>USERNAME</th>
+                <th>PRODUCT NAME</th>
+                <th>DETAILS</th>
+          
+                <th>QUANTITY</th>
+             
+                <th>ADVANCE AMOUNT</th>
+                
+                <th>DATE</th>
+                <th>STATUS</th>
+            {% for row in cus %}
+            <tr>
+                <td>{{row.user.fname}} {{row.user.lname}}</td>
+                <td>{{row.cd_name}}</td>
+                <td>{{row.details}}</td>
+                <td>{{row.quantity}}</td>
+                {% if row.amount == "pending" %}
+                <td><a class="btn btn-success" href="/admin_add_amount/{{row.id}}">add amount</a></td>
+                {% else %}
+                <td>{{row.amount}}</td>
+                {% endif %}
+
+                <td>{{row.date}}</td>
+                <!-- <td>{{row.status}}</td> -->
+                {% if row.status == "pending" %}
+                <td><a class="btn btn-success" href="/admin_accept/{{row.id}}">Accept</a></td>
+                <td><a class="btn btn-danger" href="/admin_reject/{{row.id}}">Reject</a></td>
+                {% elif row.status == "paid"%}
+                <td><a class="btn btn-primary" href="/admin_cdispatch/{{row.id}}">dispatch</a></td>    
+
+                <td><a class="btn btn-info" href="/admin_view_cpayment/{{row.id}}">view payment</a></td>    
+                
+                {%else%}
+                <td>{{row.status}}</td>
+                {%endif%}
+
+            </tr>
+{%endfor%}
+        </table>
+
+        {% include 'footer.html'%}
+

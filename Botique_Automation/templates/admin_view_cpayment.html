@@ -1,0 +1,26 @@
+{% include 'adminheader.html'%}
+
+
+<form action="" method="post">
+    {%csrf_token%}  
+<h1>VIEW PAYMENT</h1>
+
+<table class="table" id="customers" >
+            <tr>
+                <th>CUSTOMER NAME</th>
+                <th>AMOUNT</th>
+                <th>DATE</th>
+               </tr>
+            {% for row in q %}
+            <tr>
+                <td>{{row.customised_design.user.fname}} {{row.customised_design.user.lname}}</td>
+                <td>{{row.camount}}</td>
+                <td>{{row.cdate}}</td>
+
+            </tr>
+            {%endfor%}
+        </table>
+   </form>
+
+   {% include 'footer.html'%}
+

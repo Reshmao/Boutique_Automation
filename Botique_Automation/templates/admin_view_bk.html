@@ -1,0 +1,34 @@
+{% include 'adminheader.html'%}
+
+
+<form action="" method="post">
+    {%csrf_token%}  
+<h1>VIEW BOOKINGS</h1>
+
+<table class="table" id="customers">
+    <tr>
+                <th>CUSTOMER </th>
+                <th>TOTAL</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+               
+            {% for row in q %}
+            <tr>
+                <td>{{row.user.fname}} {{row.user.lname}}</td>
+                <td>{{row.total}}</td>
+                <td>{{row.date}}</td>
+                <td>{{row.status}}</td>
+                <td> <a class="btn btn-primary" href="/admin_view_booking_details/{{row.id}}">booking details</a></td>
+ 
+                {%if row.status == "paid"%}
+               <!-- <td><a class="btn btn-info" href="/admin_view_payment/{{row.id}}">view payment</a></td> -->
+                <td><a class="btn btn-primary" href="/admin_dispatch/{{row.id}}">dispatch</a></td>    
+                {%endif%}
+
+            </tr>
+            {%endfor%}
+        </table>
+   </form>
+
+  
+   {% include 'footer.html'%}
